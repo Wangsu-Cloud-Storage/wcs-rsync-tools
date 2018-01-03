@@ -99,6 +99,25 @@ Linux:
 2. 服务启动后，允许通过浏览器远程操作，即打开浏览器，输入IP:Port进入操作界面
 <br>注：Port默认为8091*
 4. 选择“配置上传”，设置基本信息，根据需要配置高级参数
+
+*注：64位的工具提供本地配置文件conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
+
+```
+如只希望在可视化界面中编辑ak，sk，bucket，syncDir等基础配置。可将这几项配置的readonly设置为ture，其它不希望在可视化界面中编辑的置为false
+{
+    "accessKey":{"value":"","readonly":true},
+    "secretKey":{"value":"","readonly":true},
+    "bucket":{"value":"","readonly":true},
+    "syncDir":{"value":"","readonly":true},
+    "uploadDomain":{"value":"","readonly":false},
+    "mgrDomain":{"value":"","readonly":false},
+    "keyPrefix":{"value":"","readonly":false},
+    "threadNum":{"value":"1","readonly":false},
+    ...
+
+}
+```
+
 5. 点击“上传”按钮，开始进行文件
 <br>上传期间，如需更改配置需要停止文件上传
 6. 通过“进度查询”了解上传的进度，并且可以对失败的文件进行重传
