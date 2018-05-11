@@ -57,6 +57,7 @@ Linux:
 |isLastModifyTime<br>是否更新服务端修改时间|否|保存在云存储的lastModifyTime是否以本地文件更新时间为准，可配置为0或者1，默认为0。<br>0:表示以上传时间为lastModifyTime。<br>1:表示以本地文件修改时间为lastModifyTime。|
 |scanOnly<br>是否仅扫描文件列表|否|是否仅扫描文件列表。<br>默认为0时，正常上传文件<br>配置为1时，仅扫描文件列表，记录修改时间，不计算hash，不比对hash，不上传文件<br>备注：该项为风险配置项，在使用前请与云存储工作人员确认|
 |uploadErrorRetry<br>上传失败重试数|否|文件上传失败进行自动重试的次数。<br>配置范围是0-5，默认值为0，表示不重试。<br>如果配置为2，则文件上传失败会自动重试2次。|
+|logFilePath<br>日志路径|否|httpLog存放的本地路径<br>如d:/log/httplog.log 或 /var/log/httplog.log|
 
 ### **命令行同步工具**
 #### **使用建议**
