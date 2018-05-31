@@ -34,11 +34,13 @@ Linux:
 |--|--|--|
 |accessKey|是|登陆https://wcs.chinanetcenter.com/login,点击“安全管理”获取。|
 |secretKey|是|登陆https://wcs.chinanetcenter.com/login,点击“安全管理”获取。|
-|bucket<br>空间名称|是|文件保存到指定的空间，如images。|
-|syncDir<br>同步路径|是|上传文件的本地路径，如/data，支持配置多个路径，以"\|"间隔，如D:/pic-2\|D:/rsync3。<br>*注意：无论Linux系统或是Windows系统，配置本地路径请使用/分隔符；Windows系统下的路径需要带盘符（如C:/data）*|
 |uploadDomain<br>上传域名|是|上传文件使用的域名，可登陆WCS管理界面-安全管理-域名查询中获取。|
 |mgrDomain<br>管理域名|是|工具进行文件HASH值比对等操作时需要使用该管理域名，可登陆WCS管理界面-安全管理-域名查询中获取。|
-|keyPrefix<br>前缀|否|上传到云存储的文件添加指定的前缀，可配置多个，与syncDir的路径一一对应，默认为空。<br>例如：<br><1>keyPrefix配置为data/，上传文件1.apk，则该文件在云存储保存为data/1.apk，即云存储新增文件夹data，1.apk保存在该文件夹中；<br><2>keyPriefix配置为data，上传文件为1.apk，则该文件在云存储保存为data1.apk；<br><3>syncDir配置为D:/rsync1\|D:/rsync2\|D:/rsync3 keyPrefix配置为test1/\|test2/<br>则rsync1下的文件（文件夹）保存在云存储test1目录下，rsync2的文件（文件夹）保存在test2目录下，rsync3的文件（文件夹）保存在根目录下。若配置的keyPrefix多于syncDir，则多余的keyPrefix不生效，取前几个目录。|
+|syncMode<br>同步模式|是|配置为0，支持单空间多目录的上传模式，需要填写bucket和syncDir，keyPrefix按需填写<br>配置为1，支持多空间多文件的上传模式，需要填写bucketAndDir<br>默认值为0|
+|bucket<br>空间名称|否|文件保存到指定的空间，如images。<br>syncMode配置为0时必填，不支持配置多个|
+|syncDir<br>同步路径|否|上传文件的本地路径，如/data。<br>syncMode配置为0时必填，支持配置多个路径，以"\|"间隔，如D:/pic-2\|D:/rsync3。<br>*注意：无论Linux系统或是Windows系统，配置本地路径请使用/分隔符；Windows系统下的路径需要带盘符（如C:/data）*|
+|keyPrefix<br>前缀|否|上传到云存储的文件添加指定的前缀，syncMode配置为0时填写,可配置多个，与syncDir的路径一一对应，默认为空。<br>例如：<br><1>keyPrefix配置为data/，上传文件1.apk，则该文件在云存储保存为data/1.apk，即云存储新增文件夹data，1.apk保存在该文件夹中；<br><2>keyPriefix配置为data，上传文件为1.apk，则该文件在云存储保存为data1.apk；<br><3>syncDir配置为D:/rsync1\|D:/rsync2\|D:/rsync3 keyPrefix配置为test1/\|test2/<br>则rsync1下的文件（文件夹）保存在云存储test1目录下，rsync2的文件（文件夹）保存在test2目录下，rsync3的文件（文件夹）保存在根目录下。若配置的keyPrefix多于syncDir，则多余的keyPrefix不生效，取前几个目录。|
+|bucketAndDir<br>目标空间及本地文件路径|否|syncMode配置为1时必填，如bucket1\|D:/dir1,D:/dir2\|prefix1,prefix2/;bucket2\|D:/dir3,D:/dir4\<br>注：<br><1>每个空间可以配置多个本地路径，本地路径支持文件夹和文件，文件需要带上后缀名<br><2>本地路径和前缀一一对应，前缀的用法同参数keyPrefix<br><3>空间名、本地路径和前缀使用"\|"分隔，多个本地路径或多个前缀以英文逗号","分隔<br><4>可配置多个空间、本地路径和前缀的组合，以";"分隔
 |threadNum<br>上传并发数|否|文件并发上传线程数。配置范围是1-10，默认值为1。<br>如果配置为５，则可同时上传５个文件。|
 |sliceThreshold<br>分片上传阈值|否|文件大小如果大于该值，则采用分片上传。单位兆（M），配置范围1M－100M，默认为4M。|
 |sliceThread<br>分片上传并发数|否|默认并发数为5，配置范围为1-10<br>如果配置为5，表示可并发上传5个分片|
@@ -57,7 +59,6 @@ Linux:
 |isLastModifyTime<br>是否更新服务端修改时间|否|保存在云存储的lastModifyTime是否以本地文件更新时间为准，可配置为0或者1，默认为0。<br>0:表示以上传时间为lastModifyTime。<br>1:表示以本地文件修改时间为lastModifyTime。|
 |scanOnly<br>是否仅扫描文件列表|否|是否仅扫描文件列表。<br>默认为0时，正常上传文件<br>配置为1时，仅扫描文件列表，记录修改时间，不计算hash，不比对hash，不上传文件<br>备注：该项为风险配置项，在使用前请与云存储工作人员确认|
 |uploadErrorRetry<br>上传失败重试数|否|文件上传失败进行自动重试的次数。<br>配置范围是0-5，默认值为0，表示不重试。<br>如果配置为2，则文件上传失败会自动重试2次。|
-|logFilePath<br>日志路径|否|httpLog存放的本地路径<br>如d:/log/httplog.log 或 /var/log/httplog.log|
 
 ### **命令行同步工具**
 #### **使用建议**
