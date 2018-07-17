@@ -73,6 +73,7 @@ Linux:
 3. 启动服务
 <br>windows下，可在空白处按住Shift键，点击右键，选择“在此处打开命令窗口(W)”
 <br>执行命令：java -jar wcs-rsync-hash-xxx.jar conf.json
+<br>*文件同步结束，若存在同步失败的文件，再次执行该命令，会重新同步上一次失败的文件*
 4. 列出上传失败的文件
 <br>执行命令：java -jar wcs-rsync-hash-xxx.jar -listfailed conf.json
 <br>输出结果保存到工具目录下的log文件中
