@@ -107,7 +107,7 @@ Linux:
 *注：64位的工具提供本地配置文件conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
 
 ```
-如只希望在可视化界面中编辑ak，sk，bucket，syncDir等基础配置。可将这几项配置的readonly设置为ture，其它不希望在可视化界面中编辑的置为false
+如只希望在可视化界面中编辑ak，sk，bucket，syncDir等基础配置。可将这几项配置的readonly设置为true，其它不希望在可视化界面中编辑的置为false
 {
     "accessKey":{"value":"","readonly":true},
     "secretKey":{"value":"","readonly":true},
