@@ -104,19 +104,19 @@ Linux:
 <br>注：Port默认为8091*
 4. 选择“配置上传”，设置基本信息，根据需要配置高级参数
 
-*注：64位的工具提供本地配置文件conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
+*注：64位的工具提供本地配置文件wcs-websync-linux-x64\service\wcsrsynchashweb\conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
 
 ```
-如只希望在可视化界面中编辑ak，sk，bucket，syncDir等基础配置。可将这几项配置的readonly设置为true，其它不希望在可视化界面中编辑的置为false
+如希望在界面上只能编辑accessKey，secretKey，bucket，syncDir等基础配置，可将这几项配置的readonly设置为false，其它不希望在界面上编辑的置为true
 {
-    "accessKey":{"value":"","readonly":true},
-    "secretKey":{"value":"","readonly":true},
-    "bucket":{"value":"","readonly":true},
-    "syncDir":{"value":"","readonly":true},
-    "uploadDomain":{"value":"","readonly":false},
-    "mgrDomain":{"value":"","readonly":false},
-    "keyPrefix":{"value":"","readonly":false},
-    "threadNum":{"value":"1","readonly":false},
+    "accessKey":{"value":"","readonly":false},
+    "secretKey":{"value":"","readonly":false},
+    "bucket":{"value":"","readonly":false},
+    "syncDir":{"value":"","readonly":false},
+    "uploadDomain":{"value":"","readonly":true},
+    "mgrDomain":{"value":"","readonly":true},
+    "keyPrefix":{"value":"","readonly":true},
+    "threadNum":{"value":"1","readonly":true},
     ...
 
 }
