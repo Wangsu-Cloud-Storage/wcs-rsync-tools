@@ -108,8 +108,9 @@ Linux:
 5. 通过“进度查询”了解上传的进度，并且可以对失败的文件进行重传
 6. 关闭服务
 <br>运行shutdown.sh关闭服务
-<br>
-<br>*注：可视化同步工具提供本地配置文件…\service\wcsrsynchashweb\conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
+<br><br>
+
+*注：可视化同步工具提供本地配置文件…\service\wcsrsynchashweb\conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
 
 ```
 如希望在界面上只能编辑accessKey，secretKey，bucket，syncDir等基础配置，可将这几项配置的readonly设置为false，其它不希望在界面上编辑的置为true
