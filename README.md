@@ -32,10 +32,10 @@ Linux:
 ### **配置项**
 |参数|必填|描述|
 |--|--|--|
-|accessKey|是|登陆https://wcs.chinanetcenter.com/login,点击“安全管理”获取。|
-|secretKey|是|登陆https://wcs.chinanetcenter.com/login,点击“安全管理”获取。|
-|uploadDomain<br>上传域名|是|上传文件使用的域名，可登陆WCS管理界面-安全管理-域名查询中获取。|
-|mgrDomain<br>管理域名|是|工具进行文件HASH值比对等操作时需要使用该管理域名，可登陆WCS管理界面-安全管理-域名查询中获取。|
+|accessKey|是|登陆https://wcs.chinanetcenter.com/login,在“安全管理--密钥管理”中获取。|
+|secretKey|是|登陆https://wcs.chinanetcenter.com/login,在“安全管理--密钥管理”中获取。|
+|uploadDomain<br>上传域名|是|上传文件使用的域名，可登陆WCS控制台后在“空间设置--访问域名”中获取。|
+|mgrDomain<br>管理域名|是|工具进行文件HASH值比对等操作时需要使用该管理域名，可登陆WCS控制台后在“空间设置--访问域名”中获取。|
 |syncMode<br>同步模式|是|仅命令行同步工具支持。<br>默认配置为0，支持单空间多目录的上传模式，需要填写bucket和syncDir，keyPrefix按需填写<br>配置为1，支持多空间多文件的上传模式，需要填写bucketAndDir。|
 |bucket<br>空间名称|否|文件保存到指定的空间，如images，不支持配置多个。<br>若是使用命令行同步工具，syncMode配置为0时必填。|
 |syncDir<br>同步路径|否|上传文件的本地路径，如/data。支持配置多个路径，以"\|"间隔，如D:/pic-2\|D:/rsync3。<br>若是使用命令行同步工具，syncMode配置为0时必填。<br>*注意：无论Linux系统或是Windows系统，配置本地路径请使用/分隔符；Windows系统下的路径需要带盘符（如C:/data）*|
