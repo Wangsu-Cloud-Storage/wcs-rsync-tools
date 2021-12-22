@@ -13,19 +13,7 @@
 
 [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash.zip)
 
-可视化同步工具：
 
-Windows:
-
-[wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-x86.zip)
-
-[wcs-websync-windows-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-x64.zip)
-
-Linux:
-
-[wcs-websync-linux-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-x86.zip)
-
-[wcs-websync-linux-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-x64.zip)
 
 注：根据操作系统的不同，选择链接下载
 
@@ -79,51 +67,4 @@ Linux:
 <br>输出结果保存到工具目录下的log文件中
 5. 强制重新上传所有文件：执行命令：java -jar wcs-rsync-hash-xxx.jar -igsync conf.json
 
-### **可视化同步工具**
-#### **使用方法**
-
-**windows操作系统**
-
-1. 启动服务
-<br>运行startup.bat开启服务，弹出TOMCAT运行窗口
-2. 首次服务成功开启，浏览器会自动打开，进入到操作界面。
-<br>服务成功开启后，允许关闭TOMCAT窗口。
-3. 服务启动期间，允许通过浏览器远程操作，即打开浏览器，输入IP:Port进入操作界面
-<br>注：Port默认为8091*
-4. 选择“配置上传”，设置基本信息，根据需要配置高级参数
-5. 点击“上传”按钮，开始进行文件
-<br>上传期间，如需更改配置需要停止文件上传
-6. 通过“进度查询”了解上传的进度，并且可以对失败的文件进行重传
-7. 关闭服务
-<br>运行shutdown.bat关闭服务
-
-**linux操作系统**
-1. 启动服务
-<br>运行startup.sh开启服务
-2. 服务启动后，允许通过浏览器远程操作，即打开浏览器，输入IP:Port进入操作界面
-<br>注：Port默认为8091*
-3. 选择“配置上传”，设置基本信息，根据需要配置高级参数
-4. 点击“上传”按钮，开始进行文件
-<br>上传期间，如需更改配置需要停止文件上传
-5. 通过“进度查询”了解上传的进度，并且可以对失败的文件进行重传
-6. 关闭服务
-<br>运行shutdown.sh关闭服务
-
-<br>*注：可视化同步工具提供本地配置文件…\service\wcsrsynchashweb\conf.json，允许用户自定义配置项在界面上是否可编辑，readonly：true表示该配置项在界面上只读，readonly：false表示该配置项在界面上可编辑；界面上不可编辑的配置项可以在配置文件中修改值*
-
-```
-如希望在界面上只能编辑accessKey，secretKey，bucket，syncDir等基础配置，可将这几项配置的readonly设置为false，其它不希望在界面上编辑的置为true
-{
-    "accessKey":{"value":"","readonly":false},
-    "secretKey":{"value":"","readonly":false},
-    "bucket":{"value":"","readonly":false},
-    "syncDir":{"value":"","readonly":false},
-    "uploadDomain":{"value":"","readonly":true},
-    "mgrDomain":{"value":"","readonly":true},
-    "keyPrefix":{"value":"","readonly":true},
-    "threadNum":{"value":"1","readonly":true},
-    ...
-
-}
-```
 
