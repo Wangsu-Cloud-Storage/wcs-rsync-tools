@@ -5,12 +5,18 @@
 
  - [下载链接](#下载链接)
  - [配置项](#配置项)
- - [命令行同步工具](#命令行同步工具)
+ - [命令行同步工具](#命令行同步工具) 
+ - [可视化同步工具](#可视化同步工具)
 
 ### **下载链接**
 命令行同步工具：
-
 [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash.zip)
+
+可视化同步工具：
+[wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-32-1.1.0.zip)
+[wcs-websync-windows-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-64-1.1.0.zip)
+[wcs-websync-linux-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-32-1.1.0.zip)
+[wcs-websync-linux-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-64-1.1.0.zip)
 
 
 
