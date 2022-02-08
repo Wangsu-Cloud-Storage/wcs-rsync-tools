@@ -72,4 +72,14 @@
 <br>输出结果保存到工具目录下的log文件中
 5. 强制重新上传所有文件：执行命令：java -jar wcs-rsync-hash-xxx.jar -igsync conf.json
 
+### **可视化同步工具**
+#### **使用方法**
+一、启动
+1、编辑\service\wcsrsynchashweb\conf.json中的password配置控制台登录密码。
+2、运行startup.bat开启服务
+3、弹出TOMCAT运行窗口，服务成功开启后，浏览器会自动打开，进入到操作界面。服务开启后，允许关闭TOMCAT窗口，不影响使用。
+4、服务开启期间，在其他机器，也可以通过浏览器实现远程操作，即打开浏览器，输入IP:Port进入操作界面
+//备注：Port默认为8091
 
+二、关闭：
+1、运行shutdown.bat，关闭服务
