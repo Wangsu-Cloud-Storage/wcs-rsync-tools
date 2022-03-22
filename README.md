@@ -61,16 +61,17 @@
 
 #### **使用方法**
 
-1. 打开wcs-rsync-hash工具所在目录，如windows目录F:\wcs-rsync或者linux目录/home/tool/wcs-rsync
-2. 配置conf.json
-3. 启动服务
-<br>windows下，可在空白处按住Shift键，点击右键，选择“在此处打开命令窗口(W)”
-<br>执行命令：java -jar wcs-rsync-hash-xxx.jar conf.json
-<br>*文件同步结束，若存在同步失败的文件，再次执行该命令，会重新同步上一次失败的文件*
-4. 列出上传失败的文件
-<br>执行命令：java -jar wcs-rsync-hash-xxx.jar -listfailed conf.json
-<br>输出结果保存到工具目录下的log文件中
-5. 强制重新上传所有文件：执行命令：java -jar wcs-rsync-hash-xxx.jar -igsync conf.json
+1. 打开wcs-rsync-hash工具所在目录，如windows目录F:\wcs-rsync或者linux目录/home/tool/wcs-rsync。
+2. 配置conf.json。
+3. 启动服务。
+<br>windows下，可在空白处按住Shift键，点击右键，选择“在此处打开命令窗口(W)”。
+<br>执行命令：java -jar wcs-rsync-hash-xxx.jar conf.json。
+<br>*文件同步结束，若存在同步失败的文件，再次执行该命令，会重新同步上一次失败的文件*。
+4. 列出上传失败的文件。
+<br>执行命令：java -jar wcs-rsync-hash-xxx.jar -listfailed conf.json。
+<br>输出结果保存到工具目录下的log文件中。
+5. 强制重新上传所有文件：执行命令：java -jar wcs-rsync-hash-xxx.jar -igsync conf.json。
+6. 如过同步过程出现异常，可查看同步工具路径中生成的`wcs-rsync-hash.log`日志，通过ERROR级别日志分析失败原因。
 
 ### **可视化同步工具**
 #### **使用方法**
