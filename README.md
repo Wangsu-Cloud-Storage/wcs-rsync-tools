@@ -1,4 +1,4 @@
-## 文件同步工具
+# 文件同步工具
 文件同步工具是基于网宿云存储提供的API开发的存量数据同步工具，可以将用户本地的数据以原有的目录结构同步到网宿云存储。
 
 注：文件同步工具适用于存量文件的迁移，对于增量文件的同步请使用api上传接口
@@ -8,21 +8,21 @@
  - [命令行同步工具](#命令行同步工具) 
  - [可视化同步工具](#可视化同步工具)
 
-### **下载链接**
+## **下载链接**
 命令行同步工具：
-[wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash.zip)
+- [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash.zip)
 
 可视化同步工具：
-[wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-32-1.1.0.zip)
-[wcs-websync-windows-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-64-1.1.0.zip)
-[wcs-websync-linux-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-32-1.1.0.zip)
-[wcs-websync-linux-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-64-1.1.0.zip)
+- [wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-32-1.1.0.zip)
+- [wcs-websync-windows-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-64-1.1.0.zip)
+- [wcs-websync-linux-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-32-1.1.0.zip)
+- [wcs-websync-linux-x64](https://wcsd.chinanetcenter.com/tool/wcs-websync-linux-64-1.1.0.zip)
 
 
 
 注：根据操作系统的不同，选择链接下载
 
-### **配置项**
+## **配置项**
 |参数|必填|描述|
 |--|--|--|
 |accessKey|是|可登陆[云存储控制台](https://wcs.chinanetcenter.com/login),在“安全管理--密钥管理”中获取。|
@@ -53,13 +53,13 @@
 |scanOnly<br>是否仅扫描文件列表|否|是否仅扫描文件列表。<br>默认为0时，正常上传文件<br>配置为1时，仅扫描文件列表，记录修改时间，不计算hash，不比对hash，不上传文件<br>备注：该项为风险配置项，在使用前请与云存储工作人员确认|
 |uploadErrorRetry<br>上传失败重试数|否|文件上传失败进行自动重试的次数。<br>配置范围是0-5，默认值为0，表示不重试。<br>如果配置为2，则文件上传失败会自动重试2次。|
 
-### **命令行同步工具**
-#### **使用建议**
+## **命令行同步工具**
+### **使用建议**
 
 1. 预先安装java，JDK要求1.6以上版本。
 2. 配置文件与工具放在相同路径
 
-#### **使用方法**
+### **使用方法**
 
 1. 打开wcs-rsync-hash工具所在目录，如windows目录F:\wcs-rsync或者linux目录/home/tool/wcs-rsync。
 2. 配置conf.json。
@@ -73,14 +73,25 @@
 5. 强制重新上传所有文件：执行命令：java -jar wcs-rsync-hash-xxx.jar -igsync conf.json。
 6. 如过同步过程出现异常，可查看同步工具路径中生成的`wcs-rsync-hash.log`日志，通过ERROR级别日志分析失败原因。
 
-### **可视化同步工具**
-#### **使用方法**
-一、启动
-1、编辑\service\wcsrsynchashweb\conf.json中的password配置控制台登录密码。
-2、运行startup.bat开启服务
-3、弹出TOMCAT运行窗口，服务成功开启后，浏览器会自动打开，进入到操作界面。服务开启后，允许关闭TOMCAT窗口，不影响使用。
-4、服务开启期间，在其他机器，也可以通过浏览器实现远程操作，即打开浏览器，输入IP:Port进入操作界面
+## **可视化同步工具**
+### **使用方法**
+#### 一、启动
+1. 编辑\service\wcsrsynchashweb\conf.json中的password配置控制台登录密码。
+2. 运行startup.bat开启服务
+3. 弹出TOMCAT运行窗口，服务成功开启后，浏览器会自动打开，进入到操作界面。服务开启后，允许关闭TOMCAT窗口，不影响使用。
+4. 服务开启期间，在其他机器，也可以通过浏览器实现远程操作，即打开浏览器，输入IP:Port进入操作界面
 //备注：Port默认为8091
 
-二、关闭：
-1、运行shutdown.bat，关闭服务
+#### 二、使用
+1. 配置accessKey、secretKey、bucket（存储空间名称）、本地同步路径、上传域名、管理域名。注：AccessKey、secretKey、上传和管理域名可到对象存储控制台获取。
+2. 配置完成后，点击"立即上传"按钮进行上传。
+3. 点击"进度查询按钮"查看当前同步进度。
+4. 点击"日志下载"查看同步过程日志，或者同步异常日志。
+![image](https://user-images.githubusercontent.com/28889058/159418991-31b3aa94-1d41-4730-8f35-ccaef80aa049.png)
+![image](https://user-images.githubusercontent.com/28889058/159419658-0d5fc45d-f95e-4450-ab31-8a2abd29c80b.png)
+![image](https://user-images.githubusercontent.com/28889058/159419497-b4def2a4-c1d4-4c50-aa42-3b1fc6a274cb.png)
+
+
+
+#### 三、关闭：
+1. 运行shutdown.bat，关闭服务
