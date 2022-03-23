@@ -43,7 +43,7 @@
 |maxRate<br>限速|否|上传速度限制，单位KB/s。配置为0则表示不限速。|
 |taskBeginTime<br>开始时间|否|工具开始上传文件的时间，格式为hh:mm:ss，如12:00:00。|
 |taskEndTime<br>停止时间|否|工具停止上传文件的时间，格式为hh:mm:ss，如15:00:00。|
-|isCompareHash<br>是否比对HASH上传|否|配置为0，表示不进行HASH对比上传，<br>配置为1，表示进行HASH对比上传，默认值为1。|
+|isCompareHash<br>是否比对HASH|否|配置是否需要比对本地文件和云存储上同名文件的Hash值。<br>配置为0，表示不进行HASH对比，直接上传，<br>配置为1，表示进行HASH对比，如果同名文件hash相同，将不再上传，默认值为1。|
 |countHashThreadNum<br>Hash计算并发数|否|计算hash的线程数。配置范围是1-100，默认值为1。如果配置为10，则可同时计算10个文件hash。|
 |compareHashThreadNum<br>Hash比对并发数|否|比对本地和云存储上文件Hash值一致性，判断是否需要重新上传。<br>该参数设置比对hash的线程数。配置范围是1-100，默认值为1。<br>如果配置为10，则可同时启动10个线程比对hash。|
 |compareHashFileNum<br>Hash比对文件数|否|比对文件Hash时，一次性从云存储查询到的文件hash数量。配置范围是1-2000，默认值为100。<br>如果配置为100，则一次从服务器群查询100个文件的hash。|
