@@ -81,7 +81,7 @@ public class RsyncEntranceCommand {
             logger.error("无法解析配置文件,请检查");
             return false;
         }
-        logger.info(confJson.toString());
+//        logger.info(confJson.toString());
         if (!RsyncCheckUtil.confJsonValidate(confJson)) {//校验配置文件
             return false;
         }
@@ -95,6 +95,13 @@ public class RsyncEntranceCommand {
             props.setProperty("log4j.rootLogger", "info,R");
             props.setProperty("log4j.appender.R.File", prefix);
             PropertyConfigurator.configure(props);// 重新装入log4j配置信息
+        }else{
+            props.setProperty("log4j.rootLogger", "info,R,stdout");
+            props.setProperty("log4j.appender.stdout", "org.apache.log4j.ConsoleAppender");
+            props.setProperty("log4j.appender.stdout.layout", "org.apache.log4j.PatternLayout");
+            props.setProperty("log4j.appender.stdout.layout.ConversionPattern", "%d{yyyy-MM-dd HH:mm:ss} - %p %l | %m%n");
+            PropertyConfigurator.configure(props);// 重新装入log4j配置信息
+
         }
         if (!StringUtils.equalsIgnoreCase(confJson.getLogLevel(), "debug")) {
             props.setProperty("log4j.logger.com", confJson.getLogLevel());
