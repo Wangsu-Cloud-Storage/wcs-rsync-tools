@@ -10,7 +10,7 @@
 
 ## **下载链接**
 命令行同步工具：
-- [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash.zip)
+- [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash-1.7.3.zip)
 
 可视化同步工具：
 - [wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-32-1.1.0.zip)
