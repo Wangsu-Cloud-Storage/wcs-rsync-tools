@@ -82,9 +82,6 @@ public class RsyncEntranceCommand {
             return false;
         }
 //        logger.info(confJson.toString());
-        if (!RsyncCheckUtil.confJsonValidate(confJson)) {//校验配置文件
-            return false;
-        }
         String prefix = confJson.getLogPrefix();
         if(StringUtils.isNotEmpty(prefix)){
             boolean isWindowsFull = Pattern.matches("^[A-z]:.*", prefix);
@@ -103,6 +100,10 @@ public class RsyncEntranceCommand {
             PropertyConfigurator.configure(props);// 重新装入log4j配置信息
 
         }
+        if (!RsyncCheckUtil.confJsonValidate(confJson)) {//校验配置文件
+            return false;
+        }
+
         if (!StringUtils.equalsIgnoreCase(confJson.getLogLevel(), "debug")) {
             props.setProperty("log4j.logger.com", confJson.getLogLevel());
             PropertyConfigurator.configure(props);// 重新装入log4j配置信息
