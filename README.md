@@ -10,7 +10,7 @@
 
 ## **下载链接**
 命令行同步工具：
-- [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash-1.7.3.zip)
+- [wcs-rsync-hash](https://wcsd.chinanetcenter.com/tool/wcs-rsync-hash-1.7.3-20230526.zip)
 
 可视化同步工具：
 - [wcs-websync-windows-x86](https://wcsd.chinanetcenter.com/tool/wcs-websync-windows-32-1.1.0.zip)
@@ -50,10 +50,11 @@
 |minFileSize<br>最小文件|否|小于规定大小的文件不进行上传操作。默认值为0(不限制)。<br>如果配置为1024，则小于1024字节的文件不进行上传操作。|
 |overwrite<br>是否覆盖|否|是否覆盖云存储上同名文件，可配置为1或者0。1表示覆盖，0表示不覆盖，默认为1。|
 |isLastModifyTime<br>是否更新服务端修改时间|否|保存在云存储的lastModifyTime是否以本地文件更新时间为准，可配置为0或者1，默认为0。<br>0:表示以上传时间为lastModifyTime。<br>1:表示以本地文件修改时间为lastModifyTime。|
-|scanOnly<br>是否仅扫描文件列表|否|是否仅扫描文件列表。<br>默认为0时，正常上传文件<br>配置为1时，仅扫描文件列表，记录修改时间，不计算hash，不比对hash，不上传文件<br>备注：该项为风险配置项，在使用前请与云存储工作人员确认|
+|scanOnly<br>是否仅扫描文件列表|否|是否仅扫描文件列表。<br>默认为0时，正常上传文件<br>配置为1时，仅扫描文件列表，记录修改时间，不上传文件；扫描后，再下一次仅同步本地的增量文件或者修改过的文件。<br>备注：该项为风险配置项，在使用前请与云存储工作人员确认|
 |uploadErrorRetry<br>上传失败重试数|否|文件上传失败进行自动重试的次数。<br>配置范围是0-5，默认值为0，表示不重试。<br>如果配置为2，则文件上传失败会自动重试2次。|
 |logLevel|否|命令行工具有效，指定需要打印的日志级别，可选debug、info、error三种日志级别|
 |logPrefix|否|命令行工具有效，指定需要打印的日志前缀，默认打印在当前路径下，如指定logPrefix=/tmp/，则生成的日志文件完整名称为/tmp/wcs-rsync-hash.log。如不指定，则在控制台直接输出日志。|
+|isSkip406|否|命令行工具有效，仅希望下一次继续同步在云上已存在的文件时才设置为0，默认为1-不再继续同步云上已存在的文件
 
 ## **命令行同步工具**
 ### **使用建议**
