@@ -42,14 +42,16 @@ public class RsyncTask implements Runnable {
     private String fileKey;
     private int sleepCout;
     private int uploadErrorRetry;
+    private boolean skip406;
 
-    public RsyncTask(FileMeta fileMeta, File rsyncFile, int operateType, int uploadErrorRetry) {
+    public RsyncTask(FileMeta fileMeta, File rsyncFile, int operateType, int uploadErrorRetry, boolean skip406) {
         this.fileMeta = fileMeta;
         this.rsyncFile = rsyncFile;
         this.operateType = operateType;
         this.fileKey = fileMeta.getFileKey();
         this.sleepCout = 0;
         this.uploadErrorRetry = uploadErrorRetry;
+        this.skip406 = skip406;
     }
 
     private static PutExtra getPutExtra(String sliceConfigPath) {
@@ -113,7 +115,7 @@ public class RsyncTask implements Runnable {
                     }
                     long beginSyncTime = System.currentTimeMillis();
                     HttpClientResult uploadHttpClientResult = HttpClientResultUtil.uploadResult(fileKey, rsyncFile);
-                    if (uploadHttpClientResult == null || uploadHttpClientResult.getStatus() != 200) {
+                    if (uploadHttpClientResult == null || (uploadHttpClientResult.getStatus() != 200 && (!skip406 || uploadHttpClientResult.getStatus() != 406))) {
                         //状态码为5xx；状态码为408则需要进行重试上传
                         if ((null != uploadHttpClientResult && uploadHttpClientResult.getStatus() == 408) || (null != uploadHttpClientResult && uploadHttpClientResult.getStatus() >= 500 && uploadHttpClientResult.getStatus() <= 599)) {
                             if (CacheInfo.retryNum.get() >= uploadErrorRetry) {
@@ -308,6 +310,29 @@ public class RsyncTask implements Runnable {
                                         sliceConfigFile.delete();
                                     }
                                 }
+
+                                if(skip406 && he.code == 406){
+                                    File sliceConfigFile = new File(sliceConfigPath);
+                                    if (sliceConfigFile.exists()) {//删除分片记录文件
+                                        sliceConfigFile.delete();
+                                    }
+                                    long costSyncTime = System.currentTimeMillis() - beginSyncTime;
+                                    if (SyncOperateEnum.add.getValue() == operateType) {//新增上传成功
+                                        RsyncConstant.uploadAddSuccessFilesNum.getAndIncrement();
+                                    }
+                                    if (SyncOperateEnum.update.getValue() == operateType) {//覆盖上传成功
+                                        RsyncConstant.uploadUpdateSuccessFilesNum.getAndIncrement();
+                                    }
+                                    if (CacheInfo.retryNum.get() > 0) {
+                                        logger.debug("【" + fileKey + "】分片上传成功,耗时" + costSyncTime + "毫秒,重试次数:" + CacheInfo.retryNum.get());
+                                    } else {
+                                        logger.debug("【" + fileKey + "】分片上传成功,耗时" + costSyncTime + "毫秒");
+                                    }
+                                    fileMeta.setStatus(0);
+                                    CacheInfo.isNeedRetry.set(false);
+                                    return;
+                                }
+
                                 //状态码为5xx；状态码为408则需要进行重试上传
                                 if (he.code == 408 || (he.code >= 500 && he.code <= 599)) {
                                     if (CacheInfo.retryNum.get() >= uploadErrorRetry) {

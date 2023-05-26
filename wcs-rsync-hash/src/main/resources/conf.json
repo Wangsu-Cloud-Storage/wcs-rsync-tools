@@ -28,5 +28,6 @@
   "uploadErrorRetry": 2,
   "syncMode": 0,
   "bucketAndDir": "aaatest002|D:/",
-  "logPrefix": "D:/logger/"
+  "logPrefix": "D:/logger/",
+  "isSkip406": "0"
 }
