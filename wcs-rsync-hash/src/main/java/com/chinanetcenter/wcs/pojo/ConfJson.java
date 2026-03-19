@@ -137,6 +137,11 @@ public class ConfJson {
      */
     public String logPrefix;
 
+    /**
+     * 是否跳过406响应将任务置为成功
+     */
+    public String isSkip406;
+
     public String getAccessKey() {
         return accessKey;
     }
@@ -393,6 +398,14 @@ public class ConfJson {
         this.logPrefix = logPrefix;
     }
 
+    public String getIsSkip406() {
+        return isSkip406;
+    }
+
+    public void setIsSkip406(String isSkip406) {
+        this.isSkip406 = isSkip406;
+    }
+
     @Override
     public String toString() {
         return "ConfJson{" +
@@ -428,9 +441,9 @@ public class ConfJson {
                 ", syncMode=" + syncMode +
                 ", bucketAndDir='" + bucketAndDir + '\'' +
                 ", logPrefix='" + logPrefix + '\'' +
+                ", isSkip406='" + isSkip406 + '\'' +
                 '}';
     }
-
 
 
 }

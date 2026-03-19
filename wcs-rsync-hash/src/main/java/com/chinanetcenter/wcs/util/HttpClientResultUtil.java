@@ -21,11 +21,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.log4j.Logger;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +32,7 @@ import java.util.Map;
  * Created by xiexb on 2014/7/13.
  */
 public class HttpClientResultUtil {
-    public static final String USER_AGENT = "wcs-rsync-hash-1.6.0";//同步工具UA
+    public static final String USER_AGENT = "wcs-rsync-hash-1.7.3";//同步工具UA
     public static String AK = "";
     public static String SK = "";
     public static String BUCKET = "";

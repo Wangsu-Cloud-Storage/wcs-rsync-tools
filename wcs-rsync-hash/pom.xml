@@ -5,14 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.chinanetcenter.wcs</groupId>
     <artifactId>wcs-rsync-hash</artifactId>
-    <version>1.7.0</version>
+    <version>1.7.2</version>
     <name>wcs-rsync-hash</name>
 
     <dependencies>
         <dependency>
-            <groupId>com.chinanetcenter.wcs</groupId>
+            <groupId>com.chinanetcenter.wcs.sdk</groupId>
             <artifactId>wcs-java-sdk</artifactId>
-            <version>2.0.0</version>
+            <version>2.0.1</version>
         </dependency>
         <dependency>
             <groupId>commons-dbcp</groupId>

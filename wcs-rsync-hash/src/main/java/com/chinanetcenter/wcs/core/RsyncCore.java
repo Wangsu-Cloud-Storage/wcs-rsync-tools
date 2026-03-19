@@ -20,14 +20,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionHandler;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * 文件同步处理类
@@ -164,7 +157,7 @@ public class RsyncCore {
                         rsynFile = new File(filePath);
                         logger.debug("同步文件本地的文件:" + filePath);
                     }
-                    rsyncPool.execute(new RsyncTask(fileMeta, rsynFile, fileMeta.getOperate(), confJson.uploadErrorRetry));
+                    rsyncPool.execute(new RsyncTask(fileMeta, rsynFile, fileMeta.getOperate(), confJson.uploadErrorRetry, StringUtils.equals(confJson.getIsSkip406(),"1")));
                 }
                 fileMetaList = SqliteDbUtil.getRsyncPagingData(2, 2, 0, 1000);//从Sqlite中查询Hash比对成功，未曾同步过的且operate!=0的记录1000条
                 if (fileMetaList == null || fileMetaList.size() == 0) {//Sqlite没有要同步的文件
